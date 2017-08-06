@@ -19,4 +19,4 @@ You can use this framework using Maven, by adding the following to your pom.xml:
     </dependency>
 </dependencies>
 ```
-Then shade the plugin into your own plugin.
+Then shade the framework into your own plugin.

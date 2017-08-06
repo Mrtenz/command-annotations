@@ -67,7 +67,7 @@ public class CommandHandler implements CommandExecutor {
                 return true;
             }
 
-            if (!commandSender.hasPermission(commandInfo.getCommand().permission())) {
+            if (!commandInfo.getCommand().permission().isEmpty() && !commandSender.hasPermission(commandInfo.getCommand().permission())) {
                 commandSender.sendMessage(noPermissionsMessage);
                 return true;
             }

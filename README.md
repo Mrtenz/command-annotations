@@ -7,7 +7,7 @@ You can use this framework using Maven, by adding the following to your pom.xml:
 <repositories>
     <repository>
         <id>mrten-repo</id>
-        <url>http://repo.mrten.nl/content/groups/public/</url>
+        <url>https://repo.mrten.nl/content/groups/public/</url>
     </repository>
 </repositories>
 

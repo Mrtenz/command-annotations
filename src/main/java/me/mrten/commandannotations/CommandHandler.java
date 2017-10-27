@@ -23,6 +23,7 @@ public class CommandHandler implements CommandExecutor {
     private final @NonNull String noPermissionsMessage;
     private final @NonNull String cannotExecuteAsConsoleMessage;
     private final @NonNull String invalidArgumentsMessage;
+    private final @NonNull String errorMessage;
     private ClassToInstanceMap<CommandChecker> checkers = MutableClassToInstanceMap.create();
     private @Getter Map<String, CommandInfo> commands = new HashMap<>();
 
@@ -93,8 +94,18 @@ public class CommandHandler implements CommandExecutor {
                 } else {
                     commandInfo.getMethod().invoke(instance);
                 }
-            } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            } catch (InstantiationException | IllegalAccessException e) {
                 e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                if (e.getCause().getClass() == CommandException.class) {
+                    CommandException commandException = (CommandException) e.getCause();
+                    commandSender.sendMessage(errorMessage.replace("{error}", commandException.getMessage()));
+                    if (commandException.getCause() != null) {
+                        commandException.getCause().printStackTrace();
+                    }
+                } else {
+                    e.printStackTrace();
+                }
             }
         }
         return true;

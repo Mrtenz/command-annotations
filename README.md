@@ -15,7 +15,7 @@ You can use this framework using Maven, by adding the following to your pom.xml:
     <dependency>
         <groupId>me.mrten</groupId>
         <artifactId>command-annotations</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.1-SNAPSHOT</version>
     </dependency>
 </dependencies>
 ```
